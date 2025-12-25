@@ -138,3 +138,28 @@ Before committing AI-generated code, ensure:
 - Errors are handled and reported
 - Code matches the project constitution
 - Changes do not introduce scope creep
+
+---
+
+## Documentation & Status Workflow
+
+This section MUST define the following rules:
+
+- The project distinguishes between internal status notes and official documentation.
+- Internal progress, decisions, and open questions may be recorded in `/docs/status/`.
+- Status notes are informal, chronological, and may be incomplete.
+- Official documentation (README.md and files in /docs/) MUST NOT be modified automatically.
+
+### Documentation Updates
+
+- Documentation updates must be explicit and intentional.
+- An AI agent MUST NOT update README.md or official docs unless explicitly instructed.
+- When significant changes are made, the agent may suggest documentation updates,
+  but must not apply them without confirmation.
+
+### Final Documentation Consolidation
+
+- Before a release or major milestone, status notes may be used to propose
+  documentation updates.
+- The agent may assist in consolidating documentation, but the final decision
+  always belongs to the supervisor.
