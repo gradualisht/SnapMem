@@ -66,6 +66,23 @@ If a generated solution violates any of these, it is WRONG.
 
 ---
 
+## Code Readability & Learning Guidelines
+
+- Prefer simple, explicit code over clever or compressed solutions.
+- Variable and function names must clearly express intent.
+- Comments should explain *why* a decision was made, not repeat *what* the code does.
+- Public functions and core modules must include docstrings describing purpose, inputs, and outputs.
+- Inline comments are allowed only for non-obvious logic or constraints.
+- If code requires a long explanatory comment, it likely needs refactoring.
+
+### Learning-Oriented Design
+
+- Code structure should be easy to follow for a junior developer.
+- Complex ideas should be broken into small, well-named functions.
+- Avoid introducing abstractions until they are justified by repeated need.
+
+---
+
 ## Error Handling Rules
 
 - The application MUST NOT abort entirely due to individual item failures
@@ -102,6 +119,36 @@ If a generated solution violates any of these, it is WRONG.
 - Prefer standard library when reasonable
 - Do NOT introduce heavy frameworks into the core
 - Dependencies must have a clear justification
+
+---
+
+## Branching & Integration Rules
+
+- All development happens in feature branches.
+- Feature branches are always created from `develop`.
+- Completed features are merged into `develop` via pull request.
+- `main` only receives tested, release-ready code via merges from `develop`.
+- AI agents must never commit directly to `main`.
+
+### Dependency Order
+
+- Features must respect architectural dependency order.
+- Core engine work must be completed and merged before CLI work.
+- CLI work must be completed and merged before GUI work.
+- No feature may depend on unfinished branches.
+- If a feature requires unmerged work, it must wait — not reimplement.
+
+---
+
+## Python Environment Rules
+
+- The project MUST be developed and executed inside the `.venv/` virtual environment.
+- System-wide Python installations MUST NOT be modified.
+- Global package installation (`pip install` without an active virtual environment) is forbidden.
+- All tools, editors, and scripts must resolve Python to `.venv/bin/python`.
+- If the virtual environment is not active, the correct action is to STOP and activate it — not to install globally.
+
+These rules exist to ensure reproducibility, safety, and predictable behavior across all systems. By isolating the project's dependencies, we prevent conflicts with other projects or system-wide packages and guarantee that all contributors are working with a consistent set of tools.
 
 ---
 
@@ -143,7 +190,7 @@ Before committing AI-generated code, ensure:
 
 ## Documentation & Status Workflow
 
-This section MUST define the following rules:
+The following rules are firm project policy:
 
 - The project distinguishes between internal status notes and official documentation.
 - Internal progress, decisions, and open questions may be recorded in `/docs/status/`.
