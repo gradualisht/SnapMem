@@ -142,13 +142,18 @@ If a generated solution violates any of these, it is WRONG.
 
 ## Python Environment Rules
 
-- The project MUST be developed and executed inside the `.venv/` virtual environment.
+- The project uses a local Python virtual environment located at `.venv/`.
+- All development, execution, and dependency installation MUST occur inside this virtual environment.
 - System-wide Python installations MUST NOT be modified.
-- Global package installation (`pip install` without an active virtual environment) is forbidden.
-- All tools, editors, and scripts must resolve Python to `.venv/bin/python`.
+- Global package installation (`pip install` without an active .venv) is forbidden.
+- The Python interpreter used by tools, scripts, and editors must always resolve to `.venv/bin/python`.
 - If the virtual environment is not active, the correct action is to STOP and activate it — not to install globally.
 
-These rules exist to ensure reproducibility, safety, and predictable behavior across all systems. By isolating the project's dependencies, we prevent conflicts with other projects or system-wide packages and guarantee that all contributors are working with a consistent set of tools.
+### Tooling Expectations
+
+- VS Code is expected to automatically detect and use the `.venv` interpreter.
+- Any AI agent (including Copilot) must assume that a virtual environment is active.
+- If the virtual environment is not active, the correct action is to STOP and activate it before proceeding.
 
 ---
 
